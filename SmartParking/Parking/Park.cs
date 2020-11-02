@@ -2,127 +2,128 @@
 
 namespace SmartParking.Parking
 {
-	class Park
-	{
-		public static int busySpaceCaunt;
+    class Park
+    {
+        public static int busySpaceCaunt;
 
-		Space[,] space;
+        Space[,] space;
 
-		static int[,] spaceMatric = new int[4, 5];
+        static int[,] spaceMatric = new int[4, 5];
 
-		static bool Free(int r, int c)
-		{
-			if (spaceMatric[r, c] == 1)
-			{
-				return false;
-			}
+        static bool Free(int r, int c)
+        {
+            if (spaceMatric[r, c] == 1)
+            {
+                return false;
+            }
 
-			spaceMatric[r, c] = 1;
+            spaceMatric[r, c] = 1;
 
-			return true;
-		}
+            return true;
+        }
 
-		public Park()
-		{
-			space = new Space[4, 5];
-		}
-		
-		public Space this[int row, int column]
-		{
-			get
-			{
-				return space[row, column];
-			}
-			set
-			{
-				if (Free(row, column))
-				{
-					Console.WriteLine($"This {row} row, {column} column is already busy");
-					space[row, column] = value;
-				}
-				else
-				{
-					throw new Exception("This space is busy");
-				}
-			}
-		}
+        public Park()
+        {
+            space = new Space[4, 5];
+        }
 
-
-		public static bool operator==(Park park, Park park1 )
-		{
-			return park.space.Length==park1.space.Length;
-		}
-
-		public static bool operator !=(Park park, Park park1)
-		{
-			return park.space.Length != park1.space.Length;
-		}
-
-		public static bool operator >(Park park, Park park1)
-		{
-			return park.space.Length > park1.space.Length;
-		}
-
-		public static bool operator <(Park park, Park park1)
-		{
-			return park.space.Length < park1.space.Length;
-		}
-
-		public static bool operator >=(Park park, Park park1)
-		{
-			return park.space.Length >= park1.space.Length;
-		}
-
-		public static bool operator <=(Park park, Park park1)
-		{
-			return park.space.Length <= park1.space.Length;
-		}
-
-		public static int operator +(Park park, Park park1)
-		{
-			return park.space.Length + park1.space.Length;
-		}
-
-		public static int operator -(Park park, Park park1)
-		{
-			return park.space.Length - park1.space.Length;
-		}
-
-		public static int operator *(Park park, Park park1)
-		{
-			return park.space.Length * park1.space.Length;
-		}
-
-		public static int operator /(Park park, Park park1)
-		{
-			return park.space.Length / park1.space.Length;
-		}
+        public Space this[int row, int column]
+        {
+            get
+            {
+                return space[row, column];
+            }
+            set
+            {
+                if (Free(row, column))
+                {
+                    Console.WriteLine($"This {row} row, {column} column is already busy");
+                    space[row, column] = value;
+                }
+                else
+                {
+                    busySpaceCaunt--;
+                    throw new Exception("This space is busy");
+                }
+            }
+        }
 
 
-		public static implicit operator int(Park park) 
-		{
-			return park.space.Length;
-		}
-		public static explicit operator Park(int n) 
-		{
-			return new Park();
-		}
+        public static bool operator ==(Park park, Park park1)
+        {
+            return park.space.Length == park1.space.Length;
+        }
 
-		public override string ToString()
-		{
-			return $"All space caunt - 20\n" +
-				$"Free space caunt - {20-busySpaceCaunt}";
-		}
+        public static bool operator !=(Park park, Park park1)
+        {
+            return park.space.Length != park1.space.Length;
+        }
 
-		public override bool Equals(object obj)
-		{
-			return obj is Park park &&
-				   space.Length == park.space.Length;
-		}
+        public static bool operator >(Park park, Park park1)
+        {
+            return park.space.Length > park1.space.Length;
+        }
 
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
-	}
+        public static bool operator <(Park park, Park park1)
+        {
+            return park.space.Length < park1.space.Length;
+        }
+
+        public static bool operator >=(Park park, Park park1)
+        {
+            return park.space.Length >= park1.space.Length;
+        }
+
+        public static bool operator <=(Park park, Park park1)
+        {
+            return park.space.Length <= park1.space.Length;
+        }
+
+        public static int operator +(Park park, Park park1)
+        {
+            return park.space.Length + park1.space.Length;
+        }
+
+        public static int operator -(Park park, Park park1)
+        {
+            return park.space.Length - park1.space.Length;
+        }
+
+        public static int operator *(Park park, Park park1)
+        {
+            return park.space.Length * park1.space.Length;
+        }
+
+        public static int operator /(Park park, Park park1)
+        {
+            return park.space.Length / park1.space.Length;
+        }
+
+
+        //public static implicit operator int(Park park) 
+        //{
+        //	return park.space.Length;
+        //}
+        //public static explicit operator Park(int n) 
+        //{
+        //	return new Park();
+        //}
+
+        public override string ToString()
+        {
+            return $"\nAll space count  20 place\n" +
+                $"Free space count - {20 - busySpaceCaunt} place\n";
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Park park &&
+                   space.Length == park.space.Length;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    }
 }

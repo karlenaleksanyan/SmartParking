@@ -3,49 +3,42 @@ using System;
 
 namespace SmartParking
 {
-	class MyCar
-	{
-		public readonly BrandsCar carBrand;
+    class MyCar
+    {
+        public BrandsCar carBrand;
 
-		public readonly string numberCar;
+        public string numberCar;
 
-		public readonly ConsoleColor color;
+        public ConsoleColor color;
 
-		public MyCar()
-		{
+        public MyCar() { }
 
-		}
+        public MyCar(BrandsCar carBrand, string numberCar, ConsoleColor color)
+        {
+            this.carBrand = carBrand;
+            this.numberCar = numberCar;
+            this.color = color;
+        }
 
-		public MyCar(BrandsCar carBrand, string numberCar, ConsoleColor color)
-		{
-			this.carBrand = carBrand;
-			this.numberCar = numberCar;
-			this.color = color;
-		}
+        public override string ToString()
+        {
+            return $"My car \n" +
+                        $"\tBrand - {carBrand}\n" +
+                       $"\tNumber - {numberCar}\n" +
+                       $"\tColor - {color}\n";
+        }
 
+        public override bool Equals(object obj)
+        {
+            return obj is MyCar car &&
+                      numberCar == car.numberCar &&
+                      carBrand == car.carBrand &&
+                      color == car.color;
+        }
 
-		public override string ToString()
-		{
-			return $"My car \n" +
-						$"\tBrand - {carBrand}\n" +
-					   $"\tNumber - {numberCar}\n" +
-					   $"\tColor - {color}\n";
-		}
-
-		public override bool Equals(object obj)
-		{
-			return obj is MyCar car &&
-					  numberCar == car.numberCar &&
-					  carBrand == car.carBrand &&
-					  color == car.color;
-		}
-
-		public override int GetHashCode()
-		{
-			return base.GetHashCode();
-		}
-
-
-
-	}
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    }
 }
