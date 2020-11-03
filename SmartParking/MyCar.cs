@@ -1,4 +1,5 @@
 ﻿using SmartParking.Enums;
+using SmartParking.Parking;
 using System;
 
 namespace SmartParking
@@ -10,6 +11,8 @@ namespace SmartParking
         public string numberCar;
 
         public ConsoleColor color;
+
+        private Park parking = new Park();
 
         public MyCar() { }
 

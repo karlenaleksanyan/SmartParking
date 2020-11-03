@@ -1,18 +1,15 @@
 ﻿namespace SmartParking.Smart
 {
-    class Wallet : Camera
+    class Wallet
     {
 
         public int Price
         {
             get
             {
-                return ((closeData - openData).Hours + 1) * 100;
+                return ((Camera.CloseData - Camera.openData).Hours + 1) * 100;
             }
-            set
-            {
-
-            }
+            set { }
         }
 
         public override string ToString()

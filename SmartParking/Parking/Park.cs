@@ -22,6 +22,25 @@ namespace SmartParking.Parking
             return true;
         }
 
+        public static void Tabloo()
+        {
+            for (int i = 0; i < spaceMatric.GetLength(0); i++)
+            {
+                for (int j = 0; j < spaceMatric.GetLength(1); j++)
+                {
+                    if (spaceMatric[i, j] == 0)
+                    {
+                        Console.Write(" [_] ");
+                    }
+                    else
+                    {
+                        Console.Write(" [#] ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
         public Park()
         {
             space = new Space[4, 5];
@@ -37,7 +56,7 @@ namespace SmartParking.Parking
             {
                 if (Free(row, column))
                 {
-                    Console.WriteLine($"This {row} row, {column} column is already busy");
+                    Console.WriteLine($"This {row} row, {column} column is already busy\n");
                     space[row, column] = value;
                 }
                 else

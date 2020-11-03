@@ -1,6 +1,4 @@
 ﻿using SmartParking.Enums;
-using SmartParking.Parking;
-using SmartParking.Smart;
 using System;
 
 namespace SmartParking
@@ -9,26 +7,15 @@ namespace SmartParking
     {
         static void Main(string[] args)
         {
-            MyCar myCar1 = new MyCar(BrandsCar.BMW, "22zz222", ConsoleColor.Black);
-            MyCar myCar2 = new MyCar(BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
-            Console.WriteLine(myCar1);
+            //user
+            SmartParking.MyCar_User(BrandsCar.BMW, "22zz222", ConsoleColor.Black);
 
-            Park parking = new Park();
+            SmartParking.MyCar_User(BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
 
-            parking[2, 3] = new Space();
-            parking[3, 4] = new Space();
+            //admin
+            SmartParking.CarEnterToPark_Admin(DateTime.Parse("6:15"), DateTime.Parse("10:14"),
+                                         BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
 
-            Console.WriteLine(parking);
-
-            Camera camera = new Camera(DateTime.Parse("6:15"), DateTime.Parse("8:14"),
-                                        BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
-            Console.WriteLine(camera);
-            Console.WriteLine(camera);
-
-            Wallet wallet = new Wallet();
-            Console.WriteLine(wallet);
-
-            camera.Security(camera, myCar2);
         }
     }
 }

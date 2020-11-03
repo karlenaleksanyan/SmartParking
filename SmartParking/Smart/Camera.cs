@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-using SmartParking.Enums;
+﻿using SmartParking.Enums;
+using SmartParking.Parking;
 using System;
 
 namespace SmartParking.Smart
 {
-    class Camera : MyCar
+    class Camera : Park
     {
         public static DateTime openData;
 
-        public static DateTime closeData;
+        public static DateTime CloseData;
 
         public string cameraNumber;
 
@@ -33,10 +33,9 @@ namespace SmartParking.Smart
 
         public Camera(DateTime openData, DateTime closeData,
                                BrandsCar carBrand, string numberCar, ConsoleColor color)
-                                                            : base(carBrand, numberCar, color)
         {
             Camera.openData = openData;
-            Camera.closeData = closeData;
+            CloseData = closeData;
             this.cameraNumber = numberCar;
             this.carmeraColor = color;
             this.cameraBrand = carBrand;
@@ -45,27 +44,25 @@ namespace SmartParking.Smart
         {
             return $"Camera watch\n" +
                 $"\tOpen data  {openData}\n" +
-                $"\tClose data  {closeData}\n" +
+                $"\tClose data  {CloseData}\n" +
                 $"\tCar number  {cameraNumber}\n" +
                 $"\tColor car {carmeraColor}\n" +
                 $"\tBrand car {cameraBrand}\n";
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is Camera camera &&
-                   base.Equals(obj) &&
-                   carBrand == camera.carBrand &&
-                   numberCar == camera.numberCar &&
-                   color == camera.color &&
-                   cameraNumber == camera.cameraNumber &&
-                   carmeraColor == camera.carmeraColor &&
-                   cameraBrand == camera.cameraBrand;
-        }
+
 
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Camera camera &&
+                   cameraNumber == camera.cameraNumber &&
+                   carmeraColor == camera.carmeraColor &&
+                   cameraBrand == camera.cameraBrand;
         }
 
         public static bool operator ==(MyCar myCar, Camera camera)
