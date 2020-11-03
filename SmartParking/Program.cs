@@ -12,8 +12,12 @@ namespace SmartParking
 
             SmartParking.MyCar_User(BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
 
+            SmartParking.MyCar_User(BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
+
+            SmartParking.MyCar_User(BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
+
             //admin
-            SmartParking.CarEnterToPark_Admin(DateTime.Parse("6:15"), DateTime.Parse("10:14"),
+            SmartParking.CarEnterToPark_Admin(Account.admin, DateTime.Parse("6:15"), DateTime.Parse("10:14"),
                                          BrandsCar.Lexus, "23oo110", ConsoleColor.Green);
 
         }

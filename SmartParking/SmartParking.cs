@@ -39,20 +39,21 @@ namespace SmartParking
 
 
         //admin
-        public static void CarEnterToPark_Admin(DateTime open, DateTime close,
+        public static void CarEnterToPark_Admin(Account account, DateTime open, DateTime close,
                                      BrandsCar brand, string number, ConsoleColor color)
         {
+            _account = account;
             Console.WriteLine("\t-------Admin account-------\n");
-            Camera(Account.admin, open, close, brand, number, color);
+            Camera(open, close, brand, number, color);
 
             _wallet = new Wallet();
             Console.WriteLine(_wallet);
         }
 
-        private static void Camera(Account account, DateTime open, DateTime close,
+        private static void Camera( DateTime open, DateTime close,
                                        BrandsCar brand, string number, ConsoleColor color)
         {
-            _account = account;
+            
             if (_account == Account.admin)
             {
                 _camera = new Camera(open, close, brand, number, color);
