@@ -4,7 +4,7 @@ using System;
 
 namespace SmartParking
 {
-    class MyCar
+class Car
     {
         public BrandsCar carBrand;
 
@@ -12,11 +12,10 @@ namespace SmartParking
 
         public ConsoleColor color;
 
-        private Park parking = new Park();
 
-        public MyCar() { }
+        public Car() { }
 
-        public MyCar(BrandsCar carBrand, string numberCar, ConsoleColor color)
+        public Car(BrandsCar carBrand, string numberCar, ConsoleColor color)
         {
             this.carBrand = carBrand;
             this.numberCar = numberCar;
@@ -33,7 +32,7 @@ namespace SmartParking
 
         public override bool Equals(object obj)
         {
-            return obj is MyCar car &&
+            return obj is Car car &&
                       numberCar == car.numberCar &&
                       carBrand == car.carBrand &&
                       color == car.color;

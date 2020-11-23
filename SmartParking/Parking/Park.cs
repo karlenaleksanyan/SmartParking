@@ -4,11 +4,22 @@ namespace SmartParking.Parking
 {
     class Park
     {
+        /// <summary>
+        /// get busy space count
+        /// </summary>
         public static int busySpaceCaunt;
-
+        
+       /// <summary>
+       /// Space carta from Park
+       /// </summary>
         Space[,] space;
 
         static int[,] spaceMatric = new int[4, 5];
+
+        public Park()
+        {
+            space = new Space[4, 5];
+        }
 
         static bool Free(int r, int c)
         {
@@ -22,6 +33,9 @@ namespace SmartParking.Parking
             return true;
         }
 
+        /// <summary>
+        /// Tabloo of the Park
+        /// </summary>
         public static void Tabloo()
         {
             for (int i = 0; i < spaceMatric.GetLength(0); i++)
@@ -34,6 +48,7 @@ namespace SmartParking.Parking
                     }
                     else
                     {
+                       
                         Console.Write(" [#] ");
                     }
                 }
@@ -41,10 +56,7 @@ namespace SmartParking.Parking
             }
         }
 
-        public Park()
-        {
-            space = new Space[4, 5];
-        }
+     
 
         public Space this[int row, int column]
         {

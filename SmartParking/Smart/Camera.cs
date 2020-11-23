@@ -18,7 +18,7 @@ namespace SmartParking.Smart
 
 
 
-        public void Security(Camera camera, MyCar myCar)
+        public void Security(Camera camera, Car myCar)
         {
             if (myCar == camera)
             {
@@ -65,14 +65,14 @@ namespace SmartParking.Smart
                    cameraBrand == camera.cameraBrand;
         }
 
-        public static bool operator ==(MyCar myCar, Camera camera)
+        public static bool operator ==(Car myCar, Camera camera)
         {
             return myCar.carBrand == camera.cameraBrand &&
                    myCar.color == camera.carmeraColor &&
                    myCar.numberCar == camera.cameraNumber;
         }
 
-        public static bool operator !=(MyCar myCar, Camera camera)
+        public static bool operator !=(Car myCar, Camera camera)
         {
             return myCar.carBrand != camera.cameraBrand ||
                    myCar.color != camera.carmeraColor ||

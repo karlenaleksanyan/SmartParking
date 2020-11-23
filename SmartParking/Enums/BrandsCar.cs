@@ -1,5 +1,8 @@
 ﻿namespace SmartParking.Enums
 {
+    /// <summary>
+    /// Car Brends
+    /// </summary>
     enum BrandsCar
     {
         BMW,
